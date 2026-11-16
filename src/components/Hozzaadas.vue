@@ -11,8 +11,12 @@ const elkeszitesiIdo = ref("")
 const emit = defineEmits(["hozzaadas"])
 
 const hozzadas = () => {
-    const ujrecept = new Recept("https://picsum.photos/300/200", nev.value, leiras.value, nehezseg.value, elkeszitesiIdo.value)
+    if (nev.value == "" || leiras.value == "" || nehezseg.value == 0 || elkeszitesiIdo.value == "") {
+        alert("Nem hagyhatsz üresen mezőt!")
+    } else {
+        const ujrecept = new Recept("https://picsum.photos/300/200", nev.value, leiras.value, nehezseg.value, elkeszitesiIdo.value)
     emit("hozzaadas", ujrecept)
+    }
 }
 
 </script>
