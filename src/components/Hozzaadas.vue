@@ -1,3 +1,10 @@
+<script setup>
+
+</script>
+
 <template>
-    <p>aaaaaaa</p>
+    
 </template>
+
+<style scoped>
+</style>

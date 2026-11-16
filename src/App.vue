@@ -2,8 +2,23 @@
 import Filter from './components/Filter.vue';
 import Hozzaadas from './components/Hozzaadas.vue';
 import ReceptLista from './components/ReceptLista.vue';
+import { ReceptData } from './data/Receptek.js';
+import Recept from './classes/Recept.js';
+import { ref } from 'vue';
+
+const receptek = ref([]);
+
+const init = () => {
+  for (let i = 0; i < ReceptData.length; i++) {
+    const e = ReceptData[i];
+    const ujrecept = new Recept(e.file, e.nev, e.leiras, e.nehezseg, e.elkeszitesiIdo)
+    receptek.value.push(ujrecept)
+  }
+}
 
 
+
+init();
 </script>
 
 <template>
@@ -34,7 +49,7 @@ import ReceptLista from './components/ReceptLista.vue';
   <main>
     <section>
       <Filter />
-      <ReceptLista />
+      <ReceptLista :receptek="receptek" />
     </section>
     <section id="hozzaad">
       <Hozzaadas />
