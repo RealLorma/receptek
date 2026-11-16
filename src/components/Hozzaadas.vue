@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import Recept from '../classes/Recept';
+import { ReceptData } from '../data/Receptek';
 
 
 const nev = ref("")
