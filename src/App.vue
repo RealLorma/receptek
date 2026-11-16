@@ -49,7 +49,7 @@ init();
   <main>
     <section id="receptek">
       <Filter class="p-3"/>
-      <ReceptLista class="m-5"/>
+      <ReceptLista :receptek="receptek" class="m-5"/>
     </section>
     <section id="hozzaad">
       <Hozzaadas class="p-5" />
