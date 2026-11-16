@@ -24,10 +24,12 @@ const getURL = (kepFile) => {
                         Elkészítési idő: {{ recept.getElkeszitesiIdo() }}
                     </p>
 
-                    <div>
-                        <button type="button" class="btn btn-success mb-2">
-                            {{ recept.getNehezseg() }}
-                        </button>
+                    <div class="nehezseg" :class="{
+                        'konnyu': recept.getNehezseg() === 'Könnyű',
+                        'kozepes': recept.getNehezseg() === 'Közepes',
+                        'nehez': recept.getNehezseg() === 'Nehéz'
+                    }">
+                        {{ recept.getNehezseg() }}
                     </div>
                     <div>
                         <button type="button" class="btn btn-primary">
@@ -51,5 +53,33 @@ const getURL = (kepFile) => {
     width: 100%;
     height: 150px;
     object-fit: cover;
+}
+
+.nehezseg {
+    
+    font-size: small;
+    font-weight: bold;
+}
+
+.konnyu, .kozepes, .nehez{
+    width: 33%;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+.konnyu {
+    color: #ffff;
+    background-color: green;
+}
+
+.kozepes {
+    color: #ffff;
+    background-color: orange;
+}
+
+.nehez {
+    color: #ffff;
+    background-color: red;
 }
 </style>
