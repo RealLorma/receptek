@@ -24,15 +24,16 @@ const getURL = (kepFile) => {
                         Elkészítési idő: {{ recept.getElkeszitesiIdo() }}
                     </p>
 
-                    <button type="button" class="btn btn-success">
-                        {{ recept.getNehezseg() }}
-                    </button>
-
-                    <br><br>
-
-                    <button type="button" class="btn btn-primary">
-                        Részletek
-                    </button>
+                    <div>
+                        <button type="button" class="btn btn-success mb-2">
+                            {{ recept.getNehezseg() }}
+                        </button>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-primary">
+                            Részletek
+                        </button>
+                    </div>
                 </div>
             </div>
 
