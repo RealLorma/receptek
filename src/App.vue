@@ -25,7 +25,7 @@ init();
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Receptkönyv</a>
+        <a class="navbar-brand" href="/">Receptkönyv</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -33,7 +33,7 @@ init();
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Receptek</a>
+              <a class="nav-link active" aria-current="page" href="#receptek">Receptek</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#hozzaad">Új recept</a>
@@ -47,12 +47,12 @@ init();
     </nav>
   </header>
   <main>
-    <section>
-      <Filter />
-      <ReceptLista :receptek="receptek" />
+    <section id="receptek">
+      <Filter class="p-3"/>
+      <ReceptLista class="m-5"/>
     </section>
     <section id="hozzaad">
-      <Hozzaadas />
+      <Hozzaadas class="p-5" />
     </section>
   </main>
 </template>
