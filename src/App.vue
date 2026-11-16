@@ -33,11 +33,11 @@ import ReceptLista from './components/ReceptLista.vue';
   </header>
   <main>
     <section id="receptek">
-      <Filter />
-      <ReceptLista />
+      <Filter class="p-3"/>
+      <ReceptLista class="m-5"/>
     </section>
     <section id="hozzaad">
-      <Hozzaadas />
+      <Hozzaadas class="p-5" />
     </section>
   </main>
 </template>
