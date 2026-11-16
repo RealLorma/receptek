@@ -7,6 +7,7 @@ import Recept from './classes/Recept.js';
 import { ref } from 'vue';
 
 const receptek = ref([]);
+const hozzaadErtek = ref(0)
 
 const init = () => {
   for (let i = 0; i < ReceptData.length; i++) {
@@ -16,7 +17,14 @@ const init = () => {
   }
 }
 
+const hozzaadGomb = () => {
+  hozzaadErtek.value++
+}
 
+const ujReceptetAd = (ujreceptet) => {
+  receptek.value.push(ujreceptet)
+  hozzaadErtek.value = 0;
+}
 
 init();
 </script>
@@ -36,7 +44,7 @@ init();
               <a class="nav-link active" aria-current="page" href="#receptek">Receptek</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#hozzaad">Új recept</a>
+              <a class="nav-link" href="#hozzaad" @click="hozzaadGomb">Új recept</a>
             </li>
             <li class="nav-item">
               <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Kedvencek</a>
@@ -51,8 +59,8 @@ init();
       <Filter class="p-3"/>
       <ReceptLista :receptek="receptek" class="m-5"/>
     </section>
-    <section id="hozzaad">
-      <Hozzaadas class="p-5" />
+    <section id="hozzaad" v-if="hozzaadErtek>0">
+      <Hozzaadas class="p-5" @hozzaadas="ujReceptetAd" />
     </section>
   </main>
 </template>
