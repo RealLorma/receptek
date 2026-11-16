@@ -10,6 +10,9 @@ const receptek = ref([]);
 const hozzaadErtek = ref(0)
 const filter = ref("")
 
+const nehezseg = ref("0");
+const elkeszitesiIdo = ref("0");
+
 const init = () => {
   for (let i = 0; i < ReceptData.length; i++) {
     const e = ReceptData[i];
@@ -32,13 +35,51 @@ const keyUp = (f) =>{
 }
 
 
-const filteredReceptek = computed(() =>{
-  if (filter.value == "") {
-    return receptek.value;
-  } else {
-    return receptek.value.filter(r => r.getNev().toLowerCase().includes(filter.value.toLowerCase()) || r.getLeiras().toLowerCase().includes(filter.value.toLowerCase()))
-  }
+const filteredReceptek = computed(() => {
+    let eredmeny = receptek.value;
+
+    if (filter.value !== "") {
+        eredmeny = eredmeny.filter(r =>
+            r.getNev().toLowerCase().includes(filter.value.toLowerCase()) ||
+            r.getLeiras().toLowerCase().includes(filter.value.toLowerCase())
+        );
+    }
+
+    if (nehezseg.value !== "0") {
+        const nehezsegek = {
+            "1": "könnyű",
+            "2": "közepes",
+            "3": "nehéz"
+        };
+
+        eredmeny = eredmeny.filter(r =>
+            r.getNehezseg().toLowerCase() === nehezsegek[nehezseg.value]
+        );
+    }
+
+    if (elkeszitesiIdo.value === "1") {
+        eredmeny = [...eredmeny].sort((a, b) =>
+            parseInt(a.getElkeszitesiIdo()) - parseInt(b.getElkeszitesiIdo())
+        );
+    }
+
+    if (elkeszitesiIdo.value === "2") {
+        eredmeny = [...eredmeny].sort((a, b) =>
+            parseInt(b.getElkeszitesiIdo()) - parseInt(a.getElkeszitesiIdo())
+        );
+    }
+
+    return eredmeny;
 });
+
+
+const nehezSzures = (ertek) => {
+    nehezseg.value = ertek;
+};
+
+const idoSzures = (ertek) => {
+    elkeszitesiIdo.value = ertek;
+};
 
 init();
 </script>
@@ -70,7 +111,7 @@ init();
   </header>
   <main>
     <section id="receptek">
-      <Filter class="p-3" @keyUp="keyUp" />
+      <Filter class="p-3" @keyUp="keyUp" @nehez="nehezSzures" @ido="idoSzures" />
       <ReceptLista :filteredReceptek="filteredReceptek" class="m-5"/>
     </section>
     <section id="hozzaad" v-if="hozzaadErtek>0">
