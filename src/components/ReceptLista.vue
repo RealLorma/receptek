@@ -56,12 +56,8 @@ const getURL = (kepFile) => {
 }
 
 .nehezseg {
-    
     font-size: small;
     font-weight: bold;
-}
-
-.konnyu, .kozepes, .nehez{
     width: 33%;
     text-align: center;
     border-radius: 10px;
