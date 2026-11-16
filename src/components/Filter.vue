@@ -1,10 +1,20 @@
-<script>
+<script setup>
+import { ref } from 'vue';
+
+
+const filter = ref("");
+
+const emit = defineEmits(["keyUp"])
+
+const press = () => {
+    emit("keyUp", filter.value)
+}
 
 </script>
 <template>
     <div class="row g-2 align-items-center">
         <div class="col-md-6">
-            <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Keress receptet...">
+            <input class="form-control" v-model="filter" list="datalistOptions" id="exampleDataList" placeholder="Keress receptet..." @keyup="press">
         </div>
 
         <div class="col-md-3">

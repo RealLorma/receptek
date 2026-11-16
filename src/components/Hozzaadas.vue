@@ -11,7 +11,7 @@ const elkeszitesiIdo = ref("")
 const emit = defineEmits(["hozzaadas"])
 
 const hozzadas = () => {
-    const ujrecept = new Recept("", nev.value, leiras.value, nehezseg.value, elkeszitesiIdo.value)
+    const ujrecept = new Recept("https://picsum.photos/300/200", nev.value, leiras.value, nehezseg.value, elkeszitesiIdo.value)
     emit("hozzaadas", ujrecept)
 }
 

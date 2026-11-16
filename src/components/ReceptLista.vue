@@ -1,7 +1,7 @@
 <script setup>
 
 const props = defineProps({
-    receptek: Array
+    filteredReceptek: Array
 })
 
 const getURL = (kepFile) => {
@@ -14,7 +14,7 @@ const getURL = (kepFile) => {
     <section>
         <div class="d-flex flex-wrap justify-content-center gap-3">
 
-            <div class="card" v-for="recept in receptek" :key="recept.getNev()">
+            <div class="card" v-for="recept in filteredReceptek" :key="recept.getNev()">
                 <img :src="getURL(recept.getFile())" class="card-img-top" alt="">
 
                 <div class="card-body">

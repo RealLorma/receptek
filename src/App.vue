@@ -4,10 +4,11 @@ import Hozzaadas from './components/Hozzaadas.vue';
 import ReceptLista from './components/ReceptLista.vue';
 import { ReceptData } from './data/Receptek.js';
 import Recept from './classes/Recept.js';
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 
 const receptek = ref([]);
 const hozzaadErtek = ref(0)
+const filter = ref("")
 
 const init = () => {
   for (let i = 0; i < ReceptData.length; i++) {
@@ -25,6 +26,19 @@ const ujReceptetAd = (ujreceptet) => {
   receptek.value.push(ujreceptet)
   hozzaadErtek.value = 0;
 }
+
+const keyUp = (f) =>{
+    filter.value = f;
+}
+
+
+const filteredReceptek = computed(() =>{
+  if (filter.value == "") {
+    return receptek.value;
+  } else {
+    return receptek.value.filter(r => r.getNev().toLowerCase().includes(filter.value.toLowerCase()) || r.getLeiras().toLowerCase().includes(filter.value.toLowerCase()))
+  }
+});
 
 init();
 </script>
@@ -56,8 +70,8 @@ init();
   </header>
   <main>
     <section id="receptek">
-      <Filter class="p-3"/>
-      <ReceptLista :receptek="receptek" class="m-5"/>
+      <Filter class="p-3" @keyUp="keyUp" />
+      <ReceptLista :filteredReceptek="filteredReceptek" class="m-5"/>
     </section>
     <section id="hozzaad" v-if="hozzaadErtek>0">
       <Hozzaadas class="p-5" @hozzaadas="ujReceptetAd" />
