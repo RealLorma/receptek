@@ -19,10 +19,8 @@
         <div class="col-md-3">
             <select class="form-select" aria-label="Elkészítési idő">
                 <option selected>Elkészítési idő szerint</option>
-                <option value="1">30 perc</option>
-                <option value="2">45 perc</option>
-                <option value="3">60 perc</option>
-                <option value="4">120 perc</option>
+                <option value="1">Növekvő</option>
+                <option value="2">Csökkenő</option>
             </select>
         </div>
     </div>
