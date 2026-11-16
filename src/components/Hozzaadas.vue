@@ -12,14 +12,19 @@ const elkeszitesiIdo = ref("")
 const emit = defineEmits(["hozzaadas"])
 
 const hozzadas = () => {
-    const ujrecept = new Recept("https://picsum.photos/300/200", nev.value, leiras.value, nehezseg.value, elkeszitesiIdo.value)
-    emit("hozzaadas", ujrecept)
+    if (nev.value == "" || leiras.value == "" || nehezseg.value == 0 || elkeszitesiIdo.value == "") {
+        alert("Nem hagyhatsz üresen mezőt!")
+    } else {
+        const ujrecept = new Recept("https://picsum.photos/300/200", nev.value, leiras.value, nehezseg.value, elkeszitesiIdo.value)
+        emit("hozzaadas", ujrecept)
+        alert("Sikeres hozzáadás!")
+    }
 }
 
 </script>
 
 <template>
-    <div class="container">
+    <div class="container hatter">
         <div class="mb-3">
             <label class="form-label">Add meg a recept nevét:</label>
             <input type="text" class="form-control" v-model="nev">
@@ -51,4 +56,10 @@ const hozzadas = () => {
     </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+    .hatter {
+        background-color: #f5f5dc;
+        border: solid 2px #000000;
+        border-radius: 10px;
+    }
+</style>
