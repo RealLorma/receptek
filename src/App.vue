@@ -10,7 +10,7 @@ import ReceptLista from './components/ReceptLista.vue';
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Receptkönyv</a>
+        <a class="navbar-brand" href="/">Receptkönyv</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -18,7 +18,7 @@ import ReceptLista from './components/ReceptLista.vue';
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Receptek</a>
+              <a class="nav-link active" aria-current="page" href="#receptek">Receptek</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#hozzaad">Új recept</a>
@@ -32,7 +32,7 @@ import ReceptLista from './components/ReceptLista.vue';
     </nav>
   </header>
   <main>
-    <section>
+    <section id="receptek">
       <Filter />
       <ReceptLista />
     </section>
