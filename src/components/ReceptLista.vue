@@ -55,13 +55,10 @@ const checkLeiras = (index) => {
                             Részletek
                         </button>
                         <p id="leirasGomb" class="d-none">{{ recept.getLeiras() }}</p>
-                        <div class="">
-                            <button type="button" @click="modositas(index)" class="btn btn-warning">
-                                Módosítás
-                            </button>
-                            <button type="button" @click="torles(index)" class="btn btn-danger">
-                                Törlés
-                            </button>
+
+                        <div class="opciok">
+                            <i class="bi bi-pencil-fill" type="button" @click="modositas(index)"></i>
+                            <i class="bi bi-trash-fill" type="button" @click="torles(index)"></i>
                         </div>
                     </div>
                 </div>
@@ -72,6 +69,24 @@ const checkLeiras = (index) => {
 </template>
 
 <style scoped>
+.bi{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.opciok, .bi {
+    padding: 4px;
+    float: right;
+}
+
+.bi-pencil-fill:hover{
+    color: #eea507dd;
+}
+
+.bi-trash-fill:hover{
+    color: #d41616;
+}
+
 .card {
     width: 250px;
     margin-bottom: 10px;
