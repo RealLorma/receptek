@@ -22,7 +22,7 @@ if (props.modositandoRecept != null) {
 
 
 
-const emit = defineEmits(["hozzaadas"])
+const emit = defineEmits(["hozzaadas", "modositas"])
 
 const hozzadas = () => {
     if (nev.value == "" || leiras.value == "" || nehezseg.value == 0 || elkeszitesiIdo.value == "") {
@@ -32,6 +32,10 @@ const hozzadas = () => {
         emit("hozzaadas", ujrecept)
         alert("Sikeres hozzáadás!")
     }
+}
+
+const modositas = (nev, leiras, nehezseg, elkeszitesiIdo) => {
+    emit("modositas", nev, leiras, nehezseg, elkeszitesiIdo)
 }
 
 </script>
@@ -101,7 +105,7 @@ const hozzadas = () => {
             </div>
 
             <div class="mb-3">
-                <p><button type="button" class="btn btn-success" @click="hozzadas">Módosítás</button></p>
+                <p><button type="button" class="btn btn-success" @click="modositas(nev, leiras, nehezseg, elkeszitesiIdo)">Módosítás</button></p>
             </div>
         </div>
     </section>

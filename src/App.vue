@@ -87,6 +87,24 @@ const modositas = (index) => {
   modositandoRecept.value = receptek.value[index]
 }
 
+const atiras = (nev, leiras, nehezseg, elkeszitesiIdo) => {
+  const index = receptek.value.indexOf(modositandoRecept.value)
+
+  if (index !== -1) {
+    const e = receptek.value[index]
+
+    e.setNev(nev)
+    e.setLeiras(leiras)
+    e.setNehezseg(nehezseg)
+    e.setElkeszitesiIdo(elkeszitesiIdo)
+  }
+
+  modositandoRecept.value = null
+  hozzaadErtek.value = 0
+
+  receptek.value = [...receptek.value]
+}
+
 
 const torles = (index) => {
   if (confirm("Biztosan törölni szeretnéd: " + receptek.value[index].getNev() )) {
@@ -129,7 +147,7 @@ init();
       <ReceptLista :filteredReceptek="filteredReceptek" @modositas="modositas" @torles="torles" class="m-5"/>
     </section>
     <section id="hozzaad" v-if="hozzaadErtek>0">
-      <Hozzaadas class="p-5" :modositandoRecept="modositandoRecept"  @hozzaadas="ujReceptetAd" />
+      <Hozzaadas class="p-5" :modositandoRecept="modositandoRecept" @modositas="atiras"  @hozzaadas="ujReceptetAd" />
     </section>
   </main>
 </template>
