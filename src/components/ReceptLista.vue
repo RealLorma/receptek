@@ -1,4 +1,8 @@
 <script setup>
+import { ref } from 'vue';
+
+
+var lenyilva = ref(false);
 
 const props = defineProps({
     filteredReceptek: Array
@@ -8,13 +12,18 @@ const getURL = (kepFile) => {
     return new URL(kepFile, import.meta.url).href
 }
 
+const checkLeiras = (index) => {
+    const leirasGomb = document.querySelectorAll("#leirasGomb")[index];
+    leirasGomb.classList.toggle("d-none");
+}
+
 </script>
 
 <template>
     <section>
         <div class="d-flex flex-wrap justify-content-center gap-3">
 
-            <div class="card" v-for="recept in filteredReceptek" :key="recept.getNev()">
+            <div class="card" v-for="(recept, index) in filteredReceptek" :key="recept.getNev()">
                 <img :src="getURL(recept.getFile())" class="card-img-top" alt="">
 
                 <div class="card-body">
@@ -32,9 +41,10 @@ const getURL = (kepFile) => {
                         {{ recept.getNehezseg() }}
                     </div>
                     <div>
-                        <button type="button" class="btn btn-primary">
+                        <button type="button" @click="checkLeiras(index)" class="btn btn-primary">
                             Részletek
                         </button>
+                        <p id="leirasGomb" class="d-none">{{ recept.getLeiras() }}</p>
                     </div>
                 </div>
             </div>
