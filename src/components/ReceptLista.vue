@@ -46,11 +46,11 @@ const checkLeiras = (index) => {
                         </button>
                         <p id="leirasGomb" class="d-none">{{ recept.getLeiras() }}</p>
                         <div class="">
-                            <button type="button" @click="modositas(index)" class="btn btn-success">
-                                Részletek
+                            <button type="button" @click="modositas(index)" class="btn btn-warning">
+                                Módosítás
                             </button>
-                            <button type="button" @click="torles(index)" class="btn btn-warning">
-                                Részletek
+                            <button type="button" @click="torles(index)" class="btn btn-danger">
+                                Törlés
                             </button>
                         </div>
                     </div>
