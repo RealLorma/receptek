@@ -9,6 +9,7 @@ import { ref, computed } from 'vue';
 const receptek = ref([]);
 const hozzaadErtek = ref(0)
 const filter = ref("")
+const modositandoRecept = ref(null)
 
 const nehezseg = ref("0");
 const elkeszitesiIdo = ref("0");
@@ -81,6 +82,19 @@ const idoSzures = (ertek) => {
     elkeszitesiIdo.value = ertek;
 };
 
+const modositas = (index) => {
+  hozzaadErtek.value++
+  modositandoRecept.value = receptek.value[index]
+}
+
+
+const torles = (index) => {
+  if (confirm("Biztosan törölni szeretnéd: " + receptek.value[index].getNev() )) {
+    receptek.value.splice(index, 1)
+    alert("Sikeres törlés")
+  } 
+}
+
 init();
 </script>
 
@@ -112,10 +126,10 @@ init();
   <main>
     <section id="receptek">
       <Filter class="p-3" @keyUp="keyUp" @nehez="nehezSzures" @ido="idoSzures" />
-      <ReceptLista :filteredReceptek="filteredReceptek" class="m-5"/>
+      <ReceptLista :filteredReceptek="filteredReceptek" @modositas="modositas" @torles="torles" class="m-5"/>
     </section>
     <section id="hozzaad" v-if="hozzaadErtek>0">
-      <Hozzaadas class="p-5" @hozzaadas="ujReceptetAd" />
+      <Hozzaadas class="p-5" :modositandoRecept="modositandoRecept"  @hozzaadas="ujReceptetAd" />
     </section>
   </main>
 </template>

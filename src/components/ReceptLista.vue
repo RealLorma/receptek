@@ -8,6 +8,16 @@ const props = defineProps({
     filteredReceptek: Array
 })
 
+const emit = defineEmits(["torles", "modositas"])
+
+const modositas = (index) => {
+    emit("modositas", index)
+}
+
+const torles = (index) => {
+    emit("torles", index)
+}
+
 const getURL = (kepFile) => {
     return new URL(kepFile, import.meta.url).href
 }
