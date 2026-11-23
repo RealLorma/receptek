@@ -45,6 +45,14 @@ const checkLeiras = (index) => {
                             Részletek
                         </button>
                         <p id="leirasGomb" class="d-none">{{ recept.getLeiras() }}</p>
+                        <div class="">
+                            <button type="button" @click="modositas(index)" class="btn btn-success">
+                                Részletek
+                            </button>
+                            <button type="button" @click="torles(index)" class="btn btn-warning">
+                                Részletek
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
