@@ -49,10 +49,10 @@ const hozzadas = () => {
             <label class="form-label">Add meg a recept elkészítési idejét:</label>
             <input type="text" class="form-control" v-model="elkeszitesiIdo">
         </div>
-
         <div class="mb-3">
             <p><button type="button" class="btn btn-success" @click="hozzadas">Hozzáad</button></p>
         </div>
+
     </div>
 </template>
 
